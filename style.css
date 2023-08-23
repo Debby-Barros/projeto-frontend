@@ -1,0 +1,170 @@
+/* obs: O margin é o espaço entre um elemento e seus vizinhos, enquanto o padding é o espaço entre o conteúdo do elemento e sua borda */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* medida do tamanho da caixa*/
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover; /* cobre toda a tela com a imagem
+  */
+
+  /*atalho*/
+  /*background: color image repeat position/size*/
+  background: var(--bg-url) no-repeat center/cover;
+}
+
+/* O * é o seletor universal, tudo que for colocado aqui vai ser aplicado para todos os elementos do body*/
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+/* obs: alinhar ao meio uma caixa com tamanho fixo -> margin: auto;*/
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+/* em elementos in line como o img, nao da pra aplicar o margin para centralizar, ent ou vc muda esse elemento para bloco ou pega o pai (profile) e coloca o text-align: center*/
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* switch*/
+#switch {
+  /*border: 1px solid red;*/
+  position: relative; /*o botao ta dentro da div switch agora, ou seja pode ocupar qualquer lugar desse quadradinho, vai ficar certinho agora*/
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute; /* coloca o botao em cima do span */
+  top: 50%;
+  left: 0;
+  z-index: 1; /* o botao sobe um andar em relação ao span*/
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial; /* começa pela esquerda e depois vai para a direita*/
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/*links */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+/* obs: a tag "a" no css é inline*/
+ul li a {
+  display: flex;
+  align-items: center; /*fica no centro da linha imaginaria daquela caixa*/
+  justify-content: center; /*fica no centro da tela*/
+  padding: 16px 24px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+/*pseudo-selector*/
+/* Os pseudosseletores são uma forma de selecionar elementos HTML com base em seu estado ou posição em relação a outros elementos. */
+ul li a:hover {
+  background-color: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*social medias*/
+#social-links {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background-color: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
